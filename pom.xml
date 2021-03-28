@@ -26,6 +26,13 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- thymeleaf 模板引用  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -56,24 +63,15 @@
                 <artifactId>jib-maven-plugin</artifactId>
                 <version>2.8.0</version>
                 <configuration>
+                    <!--from节点用来设置镜像的基础镜像，相当于Docerkfile中的FROM关键字-->
+                    <from>
+                        <!--使用openjdk官方镜像，tag是8-jdk-stretch，表示镜像的操作系统是debian9,装好了jdk8-->
+                        <image>openjdk:8u212-jdk-stretch</image>
+                    </from>
                     <to>
                         <!--镜像名称和tag，使用了mvn内置变量${project.version}，表示当前工程的version-->
-                        <image>test1</image>
+                        <image>student-manager</image>
                     </to>
-                    <!--容器相关的属性-->
-                    <container>
-                        <!--jvm内存参数-->
-                        <jvmFlags>
-                            <jvmFlag>-Xms4g</jvmFlag>
-                            <jvmFlag>-Xmx4g</jvmFlag>
-                        </jvmFlags>
-                        <!--要暴露的端口-->
-                        <ports>
-                            <port>8080</port>
-                        </ports>
-                        <!--使用该参数将镜像的创建时间与系统时间对其-->
-                        <useCurrentTimestamp>true</useCurrentTimestamp>
-                    </container>
                 </configuration>
             </plugin>
         </plugins>

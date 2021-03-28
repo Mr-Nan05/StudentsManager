@@ -6,16 +6,32 @@
 
 配置信息如下：
 
-```
+```properties
+server.port=8080
 spring.jpa.hibernate.ddl-auto=update
-spring.datasource.url=jdbc:mysql://${MYSQL_HOST:localhost}:3306/db_example
-spring.datasource.username=root
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/db_example
+spring.datasource.username=spring
 spring.datasource.password=19990505
+
+spring.thymeleaf.prefix=classpath:/templates/
+spring.thymeleaf.suffix=.html
+spring.thymeleaf.mode=HTML5
+spring.thymeleaf.encoding=UTF-8
+spring.thymeleaf.servlet.content-type=text/html
+spring.thymeleaf.cache=false
 ```
 
 ### 系统操作简介
 
-添加学生信息：可使用postman向localhost:8080/manager/add发送post请求，参数以请求体form-data形式携带
+##### 一般操作
+
+启动系统后浏览器输入localhost:8080/manager/进入导航页，根据首页html页面的导航进行操作
+
+由于json格式展示已经很清楚，故没有设置html页面
+
+##### postman操作
+
+添加学生信息：可使用postman向localhost:8080/manager/add发送post请求，参数请求体为form-data形式
 
 更新学生信息：路由：manager/update，参数同add操作
 
